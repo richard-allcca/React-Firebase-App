@@ -1,12 +1,10 @@
 import { getAuth, signOut } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../context/authContext';
-import { default as app, default as appFirestore } from '../credenciales';
+import appFirestore from '../credenciales';
 import useForm from '../hooks/useForm';
 
 const auth = getAuth(appFirestore);
-const db = getFirestore(app)
 
 const Home = ({ correoUsuario }) => {
 
