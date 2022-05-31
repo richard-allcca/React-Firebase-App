@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useContext, useState } from 'react';
 import './App.css';
+import AuthContext from './context/authContext';
+import Home from './pages/Home';
+import Login from './pages/Login';
+
+const auth = getAuth();
 
 function App() {
+
+  const [usuario, setUsuario] = useState(null)
+
+  const { isAuthenticated } = useContext(AuthContext);
+
+  onAuthStateChanged(auth, (usuarioFirebase) => {
+    if (usuarioFirebase) {
+      setUsuario(usuarioFirebase)
+    } else {
+      // TODO: revisar si es necesario
+      setUsuario(null)
+    }
+  })
+
+  const content = isAuthenticated ? <Home correoUsuario={usuario} /> : <Login />;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {content}
     </div>
   );
 }
 
 export default App;
+
