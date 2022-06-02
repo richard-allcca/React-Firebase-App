@@ -6,6 +6,11 @@
 
 - Aplicación para el uso de Firebase con Authentication.
 - CRUD para el uso de peticiones a Firestore.
+- También utilice useContext para el manejo de estados y control de formulario
+  
+<img src="./src/assets/firebase-mayo.png" >
+
+<img src="./src/assets/firebase-mayo-crud.png" >
 
 ## Dependencias
 

@@ -11,7 +11,7 @@ const auth = getAuth(appFirestore);
 
 const Home = ({ usuario }) => {
 
-  const { correo } = usuario || '';
+  const { email } = usuario || '';
 
   const { setIsAuthenticated } = useContext(AuthContext);
 
@@ -23,7 +23,7 @@ const Home = ({ usuario }) => {
   return (
     <div className="container">
       <h2 className='text-center mt-4' >
-        Bienvenido 😃 <strong>{correo}</strong>
+        Bienvenido 😃 <strong>{email}</strong>
       </h2>
 
       <button className="btn btn-danger" onClick={handleLogout}>
