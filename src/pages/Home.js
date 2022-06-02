@@ -1,78 +1,43 @@
 import { getAuth, signOut } from 'firebase/auth';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+// components
+import FormAddUsers from '../components/FormAddUsers';
+import ListUsers from '../components/ListUsers';
+// firebase
 import AuthContext from '../context/authContext';
 import appFirestore from '../credenciales';
-import useForm from '../hooks/useForm';
 
 const auth = getAuth(appFirestore);
 
-const Home = ({ correoUsuario }) => {
+const Home = ({ usuario }) => {
 
-  const { email } = correoUsuario || '';//fixme
+  const { correo } = usuario || '';
 
-  const { logout } = useContext(AuthContext)
+  const { setIsAuthenticated } = useContext(AuthContext);
 
-  const { form, saveUser, handleChange } = useForm(false)
-  const { nombre, edad, profesion } = form;
-
-  useEffect(() => {
-
-    if (!email) logout();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email]);
-
+  const handleLogout = () => {
+    signOut(auth);
+    setIsAuthenticated(false);
+  }
 
   return (
     <div className="container">
-      <h2>
-        Bienvenido <strong>{email}</strong>
+      <h2 className='text-center mt-4' >
+        Bienvenido 😃 <strong>{correo}</strong>
       </h2>
 
-      <button className="btn btn-danger" onClick={() => signOut(auth)}>
+      <button className="btn btn-danger" onClick={handleLogout}>
         Cerrar Sesión
       </button>
 
       <hr />
 
       <div className="row">
-        <div className="col-md-4">
-          <h3>Ingresar Usuarios</h3>
-          <form onSubmit={saveUser} >
-            <div className="card card-body">
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="nombre"
-                  placeholder="Nombre de Usuario"
-                  value={nombre}
-                  onChange={handleChange}
-                  className="form-control mb-3"
-                />
-                <input
-                  type="text"
-                  name="edad"
-                  placeholder="edad de Usuario"
-                  value={edad}
-                  onChange={handleChange}
-                  className="form-control mb-3"
-                />
-                <input
-                  type="text"
-                  name="profesion"
-                  placeholder="Profesión de Usuario"
-                  value={profesion}
-                  onChange={handleChange}
-                  className="form-control mb-3"
-                />
-              </div>
-              <button className="btn btn-primary">Agregar</button>
-            </div>
-          </form>
-        </div>
 
-        <div className="col-md-8">
-          <h3 className="text-center mb-5">Lista de Usuarios</h3>
-        </div>
+        <FormAddUsers />
+
+        <ListUsers />
+
       </div>
     </div>
   );

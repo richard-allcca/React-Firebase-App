@@ -1,0 +1,41 @@
+import { getFirestore } from 'firebase/firestore';
+import React, { createContext, useState } from 'react';
+// firebase
+import appFirestore from '../credenciales';
+const db = getFirestore(appFirestore)
+
+const UserContext = createContext();
+
+const initialState = {
+  nombre: '',
+  edad: '',
+  profesion: ''
+}
+
+const UserProvider = ({ children }) => {
+
+  const [user, setUser] = useState(initialState)
+
+
+  const handleChange = (e) => {
+
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  const data = {
+    user,
+    setUser,
+    handleChange,
+  }
+
+  return (
+    <UserContext.Provider value={data} >{children}</UserContext.Provider>
+  )
+}
+
+export { UserProvider };
+
+export default UserContext;

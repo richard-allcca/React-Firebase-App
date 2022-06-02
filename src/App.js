@@ -9,20 +9,18 @@ const auth = getAuth();
 
 function App() {
 
-  const [usuario, setUsuario] = useState(null)
+  const [usuario, setUsuario] = useState('')
 
-  const { isAuthenticated } = useContext(AuthContext);
+  // const [isAuth, setAuth] = useState(false)
+  const { isAuthenticated } = useContext(AuthContext)
 
   onAuthStateChanged(auth, (usuarioFirebase) => {
     if (usuarioFirebase) {
       setUsuario(usuarioFirebase)
-    } else {
-      // TODO: revisar si es necesario
-      setUsuario(null)
     }
   })
 
-  const content = isAuthenticated ? <Home correoUsuario={usuario} /> : <Login />;
+  const content = isAuthenticated ? <Home usuario={usuario} /> : <Login />;
 
   return (
     <div className="App">

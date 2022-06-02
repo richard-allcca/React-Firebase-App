@@ -1,9 +1,29 @@
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import useForm from '../hooks/useForm';
 
-const Formulario = ({ registro }) => {
+const auth = getAuth();
 
-  const { form, handleChange, handleSubmit } = useForm({ registro });
+const Formulario = ({ registro, setLogin }) => {
+
+  const { form, handleChange } = useForm({ registro });
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const correo = form.email;
+    const password = form.password;
+
+    if (registro) {
+      await createUserWithEmailAndPassword(auth, correo, password);
+      console.log('Usuario registrado');
+    } else {
+      await signInWithEmailAndPassword(auth, correo, password);
+      setLogin(true);
+      console.log('Usuario logueado');
+    }
+  };
 
 
   return (

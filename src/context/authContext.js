@@ -9,20 +9,12 @@ const AuthProvider = ({ children }) => {
 
   const [usuario, setUsuario] = useState(null)
 
-  const login = () => {
-    setIsAuthenticated(true)
-  }
-
-  const logout = () => {
-    setIsAuthenticated(false)
-  }
 
   const data = {
     isAuthenticated,
+    setIsAuthenticated,
     usuario,
     setUsuario,
-    login,
-    logout
   }
 
   return (
