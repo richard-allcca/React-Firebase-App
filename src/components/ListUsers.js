@@ -26,6 +26,8 @@ const ListUsers = () => {
       console.log('boton de actualizar');
       getOneUser(userIdDb)
     }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userIdDb])
 
 
