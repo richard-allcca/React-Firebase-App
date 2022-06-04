@@ -12,7 +12,17 @@
 - CRUD para el uso de peticiones a Firestore.
 - También utilice useContext para el manejo de estados y control de formulario
 
-[ver Demo Online]()
+---
+
+## Demo
+
+- inicia sesión con:
+- correo: richard_allcca_llano@hotmail.com
+- password: 12345678
+
+[ver Demo Online](https://firebase-firestore-app.netlify.app/)
+
+---
   
 <img src="./src/assets/firebase-mayo.png" title="Authentication con Firebase">
 
