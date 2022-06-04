@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore';
 import React, { useContext } from 'react';
 import ListContext from '../context/listContext';
 import UserContext from '../context/userContext';
@@ -15,21 +15,33 @@ const initialState = {
 
 const FormAddUsers = () => {
 
-  const { user, setUser, handleChange } = useContext(UserContext)
-  const { nombre, edad, profesion } = user;
-
-
+  // context
   const { getList } = useContext(ListContext)
+  const { user, setUser, userIdDb, setUserIdDb, handleChange } = useContext(UserContext)
+
+  const { nombre, edad, profesion } = user;
 
   const saveUser = async (e) => {
     e.preventDefault()
 
-    try {
-      await addDoc(collection(db, 'usuarios'), { nombre, edad, profesion });
+    if (userIdDb === '') {
 
-    } catch (error) {
+      try {
+        await addDoc(collection(db, 'usuarios'), { ...user });
 
-      console.log(error)
+      } catch (error) {
+        console.log(error)
+      }
+
+    } else {
+
+      try {
+        await setDoc(doc(db, 'usuarios', userIdDb), { ...user });
+        setUserIdDb('')
+
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     setUser(initialState);
@@ -40,6 +52,7 @@ const FormAddUsers = () => {
   return (
     <div className="col-md-4">
       <h3>Ingresar Usuarios</h3>
+
       <form onSubmit={saveUser} >
         <div className="card card-body">
           <div className="form-group">
@@ -68,9 +81,13 @@ const FormAddUsers = () => {
               className="form-control mb-3"
             />
           </div>
-          <button className="btn btn-primary">Agregar</button>
+
+          <button className="btn btn-primary">
+            {userIdDb ? 'Actualizar' : 'Agregar'}
+          </button>
         </div>
       </form>
+
     </div>
   )
 }

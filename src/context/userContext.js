@@ -12,10 +12,16 @@ const initialState = {
   profesion: ''
 }
 
+/**
+ * 
+ * @returns states and functions of users to use in components
+ */
+
 const UserProvider = ({ children }) => {
 
   const [user, setUser] = useState(initialState)
 
+  const [userIdDb, setUserIdDb] = useState('')
 
   const handleChange = (e) => {
 
@@ -29,6 +35,8 @@ const UserProvider = ({ children }) => {
     user,
     setUser,
     handleChange,
+    userIdDb,
+    setUserIdDb,
   }
 
   return (

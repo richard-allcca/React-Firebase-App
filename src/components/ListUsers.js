@@ -1,5 +1,5 @@
 import { deleteDoc, doc, getDoc, getFirestore } from 'firebase/firestore';
-import React, { memo, useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
 import ListContext from '../context/listContext';
 import UserContext from '../context/userContext';
 import credentials from '../credenciales';
@@ -9,11 +9,11 @@ const db = getFirestore(credentials);
 
 const ListUsers = () => {
 
-  const [userIdDb, setUserIdDb] = useState('')
+  // const [userIdDb, setUserIdDb] = useState('')
 
   // constexts
   const { list, getList } = useContext(ListContext)
-  const { setUser } = useContext(UserContext)
+  const { setUser, userIdDb, setUserIdDb } = useContext(UserContext)
 
   useEffect(() => {
     getList()
