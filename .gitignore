@@ -10,6 +10,7 @@
 
 # production
 /build
+privado.md
 
 # misc
 .DS_Store

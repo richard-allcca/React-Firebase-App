@@ -9,8 +9,6 @@ const db = getFirestore(credentials);
 
 const ListUsers = () => {
 
-  // const [userIdDb, setUserIdDb] = useState('')
-
   // constexts
   const { list, getList } = useContext(ListContext)
   const { setUser, userIdDb, setUserIdDb } = useContext(UserContext)

@@ -1,8 +1,4 @@
-import { getFirestore } from 'firebase/firestore';
 import React, { createContext, useState } from 'react';
-// firebase
-import appFirestore from '../credenciales';
-const db = getFirestore(appFirestore)
 
 const UserContext = createContext();
 
