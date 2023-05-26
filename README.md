@@ -5,7 +5,7 @@ Crud con **Autenticación** por email y almacenamiento en base de datos de **Fir
 
 ## Vista previa
 
-![Preview](./src/assets/Captura%20de%20pantalla%202023-04-14%20080535.png)
+![Preview](./src/assets/firebase-v9.png)
 
 ## Recuerda
 
