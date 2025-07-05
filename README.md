@@ -1,15 +1,12 @@
 # Firebase V9 con React
 
-Crud con **Autenticación** por email y almacenamiento en base de datos de **Firestore**
-<!-- [tuto](https://www.youtube.com/watch?v=GmVRhPVH_2A&t=548s) -->
+Crud con **Autenticación** por email y almacenamiento de usuarios en db de **Firestore**
 
-## Vista previa
-
-![Preview](./src/assets/firebase-v9.png)
+<!-- [tutorial](https://www.youtube.com/watch?v=GmVRhPVH_2A&t=548s) -->
 
 ## Recuerda
 
-- Instala lo modulos
+- Instala lo módulos
 
       npm install
 
@@ -22,8 +19,8 @@ Crud con **Autenticación** por email y almacenamiento en base de datos de **Fir
     email: pedrito@hotmail.com
     pass:  123456
 
-**También puedes crear tu propio usuario**
+***También puedes crear tu propio usuario***
 
-<!-- [List Firebase](https://www.youtube.com/playlist?list=PLCG3NOef02QgaINOlaevZylop8cK9VwEy) -->
-<!-- [tuto pendiente](https://www.youtube.com/watch?v=7UauYalZqkc) -->
-<!-- [repo de tuto pendiente](https://github.com/codewithas1/FirebaseTutorial/blob/master/src/firebase.js) -->
+## Vista previa
+
+![Preview](./src/assets/firebase-v9.png)
